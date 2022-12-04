@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Firebase.CloudMessaging;
 using Firebase.Core;
-using Firebase.InstanceID;
+//using Firebase.InstanceID;
 using Foundation;
 using UIKit;
 using UserNotifications;
@@ -302,7 +302,7 @@ namespace Plugin.FirebasePushNotification
             Messaging.SharedInstance.AutoInitEnabled = false;
             UIApplication.SharedApplication.UnregisterForRemoteNotifications();
             NSUserDefaults.StandardUserDefaults.SetString(string.Empty, FirebaseTokenKey);
-            InstanceId.SharedInstance.DeleteId((h) => { });
+            //InstanceId.SharedInstance.DeleteId((h) => { });
         }
         // To receive notifications in foreground on iOS 10 devices.
         [Export("userNotificationCenter:willPresentNotification:withCompletionHandler:")]
@@ -494,9 +494,9 @@ namespace Plugin.FirebasePushNotification
         //                message.Add(new NSString(p.Key), new NSString(p.Value));
         //            }
 
-        //            Messaging.SharedInstance.SendMessage(message, groupKey, messageId, timeOfLive);
+        //            Messaging.SharedInstance.SendMessage(message, groupKey, messageId, timeOfLive)
         //        }
-                  
+
         //    }
         //}
 
@@ -612,8 +612,7 @@ namespace Plugin.FirebasePushNotification
 
         public async Task<string> GetTokenAsync()
         {
-            var result = await InstanceId.SharedInstance.GetInstanceIdAsync();
-            return result?.Token;
+            return await Task.Delay(100).ContinueWith(t => NSUserDefaults.StandardUserDefaults.StringForKey(FirebaseTokenKey));
         }
     }
 

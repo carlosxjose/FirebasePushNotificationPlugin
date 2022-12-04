@@ -68,7 +68,7 @@
     <Compile Include="**\*.ios.cs" />
     <Compile Include="**\*.ios.*.cs" />
     <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />
-    <PackageReference Include="Xamarin.Firebase.iOS.InstanceID" Version="4.8.0" />
+    <!--<PackageReference Include="Xamarin.Firebase.iOS.InstanceID" Version="4.8.0" />-->
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('xamarin.mac')) ">
