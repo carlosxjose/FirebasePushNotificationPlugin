@@ -493,7 +493,7 @@ namespace Plugin.FirebasePushNotification
                     {
                         message.Add(new NSString(p.Key), new NSString(p.Value));
                     }
-
+                    
                     //Messaging.SharedInstance.SendMessage(message, groupKey, messageId, timeOfLive);
                 }
 
@@ -612,8 +612,9 @@ namespace Plugin.FirebasePushNotification
 
         public async Task<string> GetTokenAsync()
         {
-            return await Task.Delay(100).ContinueWith(p => NSUserDefaults.StandardUserDefaults.StringForKey(FirebaseTokenKey));//InstanceId.SharedInstance.GetInstanceIdAsync();
-            //return result?.Token;
+            return await Task.Delay(100)
+                .ContinueWith(p => NSUserDefaults.StandardUserDefaults.StringForKey(FirebaseTokenKey));//InstanceId.SharedInstance.GetInstanceIdAsync();
+        
         }
     }
 
